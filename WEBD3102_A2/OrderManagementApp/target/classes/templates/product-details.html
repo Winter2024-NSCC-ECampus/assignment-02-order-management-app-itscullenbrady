@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Product Details</title>
+        <style>
+            /* Style for the body */
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #faefdc;
+                font-family: "Courier New", sans-serif;
+                color: #333;
+            }
+            /* Style for the header */
+            .header {
+                background-color: #ffe8c2;
+                padding: 15px;
+                text-align: center;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            /* Style for header links */
+            .header a {
+                text-decoration: none;
+                color: #444;
+                margin: 0 10px;
+                padding: 6px 12px;
+                background-color: #decaa3;
+                border-radius: 4px;
+                transition: box-shadow 0.2s;
+            }
+            /* Hover effect for header links */
+            .header a:hover {
+                background-color: #b6a685;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            /* Style for the container */
+            .container {
+                background-color: #fffcf3;
+                max-width: 500px;
+                margin: 40px auto;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            /* Style for buttons */
+            button {
+                background-color: #decaa3;
+                border: none;
+                padding: 10px;
+                margin-top: 10px;
+                cursor: pointer;
+                border-radius: 4px;
+                transition: box-shadow 0.2s;
+            }
+            /* Hover effect for buttons */
+            button:hover {
+                background-color: #b6a685;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            /* Style for details paragraphs */
+            .details p {
+                margin: 6px 0;
+            }
+            /* Style for the h2 element */
+            h2 {
+                margin-top: 0;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="header">
+        <!-- Navigation links -->
+        <a href="/products/list">Product List</a>
+        <a href="/users/login">Login</a>
+        <a href="/users/register">Register</a>
+        <a href="/users/logout">Logout</a>
+    </div>
+    <div class="container" th:if="${product}">
+        <div class="details">
+            <!-- Display product name -->
+            <h2 th:text="${product.name}"></h2>
+            <!-- Display product category -->
+            <p th:text="'Category: ' + ${product.category}"></p>
+            <!-- Display product description -->
+            <p th:text="'Description: ' + ${product.description}"></p>
+            <!-- Display product rating -->
+            <p th:text="'Rating: ' + ${product.rating}"></p>
+            <!-- Display product reviews -->
+            <p th:text="'Reviews: ' + ${product.reviews}"></p>
+            <!-- Display available quantity -->
+            <p th:text="'Available Quantity: ' + ${product.quantity}"></p>
+            <!-- Form to place an order -->
+            <form th:action="@{/orders/place}" method="post">
+                <input type="hidden" name="productId" th:value="${product.id}" />
+                <label>Quantity:</label>
+                <input type="number" name="quantity" min="1" required />
+                <button type="submit">Place Order</button>
+            </form>
+        </div>
+    </div>
+    </body>
+    </html>

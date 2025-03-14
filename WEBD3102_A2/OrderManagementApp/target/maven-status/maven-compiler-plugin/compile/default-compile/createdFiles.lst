@@ -1,0 +1,10 @@
+org\example\ordermanagementapp\model\Order.class
+org\example\ordermanagementapp\OrderManagementAppApplication.class
+org\example\ordermanagementapp\repository\UserRepository.class
+org\example\ordermanagementapp\controller\ProductController.class
+org\example\ordermanagementapp\repository\OrderRepository.class
+org\example\ordermanagementapp\model\Product.class
+org\example\ordermanagementapp\controller\UserController.class
+org\example\ordermanagementapp\model\User.class
+org\example\ordermanagementapp\controller\OrderController.class
+org\example\ordermanagementapp\repository\ProductRepository.class
